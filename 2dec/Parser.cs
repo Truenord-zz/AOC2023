@@ -12,9 +12,6 @@ constructor, it calls the `DataLoader()` method to load the contents of a file i
 variable called `data`. Then, it calls the `SplitDataEntries()` method, passing in the `data` string
 as a parameter, to split the data into an array of strings called `entries`. */
         public Parser(){
-            string data = DataLoader();
-            var entries = SplitDataEntries(data);
-
         }
     
         /// <summary>
@@ -34,10 +31,19 @@ as a parameter, to split the data into an array of strings called `entries`. */
        /// </summary>
        /// <param name="data">The data parameter is a string that contains multiple data entries
        /// separated by a delimiter.</param>
-        private string[] SplitDataEntries(string data){
-            char dataDelimiter = ';';
-            string[] x = data.Split(dataDelimiter);
+        private string[] SplitDataEntries(string data, char delimiter){
+            return data.Split(delimiter);
         } 
 
-    }
+        /// <summary>
+        /// The function initializes and retrieves a list of games from a data source.
+        /// </summary>
+        /// <returns>
+        /// The method is returning an array of strings, which represents the games.
+        /// </returns>
+        public string[] InitializeAndGetGames(){
+            string data = DataLoader();
+            return SplitDataEntries(data, ';');
+        }
+    }    
 }
